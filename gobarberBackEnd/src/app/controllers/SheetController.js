@@ -1,0 +1,37 @@
+/* eslint-disable class-methods-use-this */
+import User from '../models/User';
+import Sheet from '../schemas/Sheet';
+
+class SheetController {
+  async index(req, res) {
+    const sheets = await Sheet.find({
+      user: req.userId,
+    })
+      .sort({ createdAt: 'desc' })
+      .limit(20);
+
+    return res.json(sheets);
+  }
+
+  async store(req, res) {
+    return res.json('ok chegou');
+  }
+
+  async sheet_detail(req, res) {
+    return res.json('ok chegou');
+  }
+
+  async update(req, res) {
+    // const notification = await Notification.findById(req.params.id);
+
+    const sheet = await Sheet.findByIdAndUpdate(
+      req.params.id,
+      { read: true },
+      { new: true }
+    );
+
+    return res.json(sheet);
+  }
+}
+
+export default new SheetController();

@@ -14,7 +14,7 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <Text>Bora conversar pelados?</Text>
+      <Text></Text>
       <LogoutButton onPress={handleLogout}>
         Logout
       </LogoutButton>

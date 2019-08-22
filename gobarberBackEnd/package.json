@@ -1,13 +1,20 @@
 {
   "name": "gobarber",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.x",
+    "yarn": "1.x"
+  },
   "main": "index.js",
   "repository": "https://gitlab.com/rafaelmf3/gobarber.git",
   "author": "rafael <rafael_mf3@hotmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js",
-    "queue": "nodemon src/queue.js"
+    "dev": "yarn docker-start && nodemon src/server.js",
+    "docker-start": "node ./utils/docker-start.js",
+    "queue": "yarn docker-start && nodemon src/queue.js",
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@sentry/node": "5.4.3",
@@ -27,6 +34,7 @@
     "pg": "^7.11.0",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.8.12",
+    "shelljs": "^0.8.3",
     "youch": "^2.0.10",
     "yup": "^0.27.0"
   },

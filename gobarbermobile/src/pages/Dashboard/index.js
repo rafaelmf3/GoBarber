@@ -3,7 +3,12 @@ import { useDispatch } from 'react-redux';
 
 import { signOut } from '~/store/modules/auth/actions';
 
-import { Container, Text, LogoutButton } from './styles';
+import { Container, Title, List } from './styles';
+
+import {MaterialIcons} from '@expo/vector-icons';
+
+import Background from '~/components/Background';
+import Appointment from '~/components/Appointment';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
@@ -13,11 +18,23 @@ export default function Dashboard() {
   }
 
   return (
-    <Container>
-      <Text></Text>
-      <LogoutButton onPress={handleLogout}>
-        Logout
-      </LogoutButton>
-    </Container>
+    <Background>
+      <Container>
+        <Title>Agendamentos</Title>
+
+        <List
+          data={() => {}}
+          keyExtractor={(item) => String(item)}
+          renderItem={(item) => (
+            <Appointment data={item}/>
+          )}
+        />
+      </Container>
+    </Background>
   );
+}
+
+Dashboard.navigationOptions = {
+  tabBarLabel: 'Agendamentos',
+  tabBarIcon: ({ tintColor }) => (<MaterialIcons name="event" size={20} color={tintColor} />),
 }

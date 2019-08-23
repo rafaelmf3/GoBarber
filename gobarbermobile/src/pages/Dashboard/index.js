@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import {MaterialIcons} from '@expo/vector-icons';
+
+import api from '~/services/api';
 
 import { signOut } from '~/store/modules/auth/actions';
 
 import { Container, Title, List } from './styles';
 
-import {MaterialIcons} from '@expo/vector-icons';
-
 import Background from '~/components/Background';
 import Appointment from '~/components/Appointment';
 
 export default function Dashboard() {
+  const [appointments, setAppointments] = useState([]);
+
+  useEffect(()=>{
+    async function loadAppointments() {
+      const response = await api.get('appointments');
+
+      setAppointments(response.data);
+    }
+
+    loadAppointments();
+
+  }, []);
+
+
+
   const dispatch = useDispatch();
 
   function handleLogout(){
@@ -23,8 +39,8 @@ export default function Dashboard() {
         <Title>Agendamentos</Title>
 
         <List
-          data={() => {}}
-          keyExtractor={(item) => String(item)}
+          data={appointments}
+          keyExtractor={(item) => String(item.id)}
           renderItem={(item) => (
             <Appointment data={item}/>
           )}

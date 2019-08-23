@@ -8,6 +8,7 @@ if (__DEV__) {
     .useReactNative()
     .use(reactotronRedux())
     .use(reactotronSaga())
+    .connect();
 
     console.tron = tron;
 

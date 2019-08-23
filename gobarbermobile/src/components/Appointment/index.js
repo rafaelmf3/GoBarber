@@ -5,14 +5,15 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import { Container, Left, Avatar, Info, Name, Time } from './styles';
 
-export default function Appointment() {
+export default function Appointment({data}) {
   return (
     <Container>
       <Left>
-        <Avatar source={{uri: 'https://api.adorable.io/avatar/50/rocketseat.png'}}/>
+        <Avatar source={{
+          uri: 'https://api.adorable.io/avatar/50/rocketseat.png'}}/>
 
         <Info>
-          <Name>Diego</Name>
+          <Name>hello</Name>
           <Time>em 3 horas</Time>
         </Info>
       </Left>

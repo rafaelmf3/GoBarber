@@ -5,7 +5,7 @@ import pt from 'date-fns/locale/pt';
 
 import {MaterialIcons} from '@expo/vector-icons';
 
-import { Container, DateButton, DateText } from './styles';
+import { Container, DateButton, DateText, Picker } from './styles';
 
 export default function DateInput({ date, onChange }) {
   const [opened, setOpened] = useState(false);
@@ -20,16 +20,17 @@ export default function DateInput({ date, onChange }) {
         <MaterialIcons name="event" size={20} color="#fff" />
         <DateText>{dateFormatted}</DateText>
       </DateButton>
-
       {opened && (
-        <DatePickerIOS
-          date={date}
-          onDateChange={onChange}
-          minimumDate={new Date()}
-          minuteInterval={60}
-          locale="pt"
-          mode="date"
-        />
+        <Picker>
+          <DatePickerIOS
+            date={date}
+            onDateChange={onChange}
+            minimumDate={new Date()}
+            minuteInterval={60}
+            locale="pt"
+            mode="date"
+          />
+        </Picker>
       )}
     </Container>
   );

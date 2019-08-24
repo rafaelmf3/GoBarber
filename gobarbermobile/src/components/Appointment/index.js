@@ -26,7 +26,8 @@ export default function Appointment({data}) {
         <Avatar source={{
           uri: data.provider.avatar
             ? data.provider.avatar.url
-            : `https://api.adorable.io/avatar/50/${data.provider.name}`}}/>
+            : `https://api.adorable.io/avatar/50/${data.provider.name}`}}
+        />
         <Info>
           <Name>{data.provider.name}</Name>
           <Time>{dateParsed}</Time>

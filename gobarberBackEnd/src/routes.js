@@ -9,7 +9,6 @@ import ProviderController from './app/controllers/ProviderController';
 import AppointmentController from './app/controllers/AppointmentController';
 import ScheduleController from './app/controllers/ScheduleController';
 import NotificationController from './app/controllers/NotificationController';
-import SheetController from './app/controllers/SheetController';
 import AvailableController from './app/controllers/AvailableController';
 
 import authMiddleware from './app/middlewares/auth';
@@ -19,10 +18,6 @@ const upload = multer(multerConfig);
 
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
-
-routes.get('/sheets', SheetController.index);
-routes.get('/sheets/:id', SheetController.sheet_detail);
-routes.post('/sheets', SheetController.store);
 
 routes.use(authMiddleware);
 

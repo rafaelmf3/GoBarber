@@ -4,6 +4,10 @@ import User from '../models/User';
 import File from '../models/File';
 
 class UserController {
+  async show(req, res) {
+    return res.status(200);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -88,6 +92,10 @@ class UserController {
       email,
       avatar,
     });
+  }
+
+  async delete(req, res) {
+    return res.status(200);
   }
 }
 
